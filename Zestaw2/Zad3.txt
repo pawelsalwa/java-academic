@@ -1,0 +1,30 @@
+import java.io.*;
+
+public class Zad3 {
+	public static void main(String[] args) throws FileNotFoundException{
+		try
+		{
+			FileReader fr= new FileReader("C:/Users/student/Desktop/txt3.txt");
+			BufferedReader br = new BufferedReader(fr);
+			String linia = new String();
+			int i=0;
+			while(br.readLine() != null)
+			{
+				linia = br.readLine();
+				System.out.print("\nlinia nr:" + i);
+				System.out.print(linia + "\n");
+				i++;
+			}
+			
+			
+		}
+		catch(FileNotFoundException e)
+		{
+		    System.out.println("Plik nie zostal znaleziony");
+		}
+		catch(IOException e)
+		{
+		    System.out.println("Blad wejscia/wyjscia");
+		}
+	}
+}

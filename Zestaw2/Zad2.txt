@@ -1,0 +1,33 @@
+
+
+import java.io.*;
+
+public class Zad2 {
+	public static void main(String[] args) throws FileNotFoundException{
+		try
+		{
+			byte[] bufor = new byte[8];
+			FileInputStream fis = new FileInputStream(new File(args[0]));
+			FileOutputStream fos = new FileOutputStream(new File(args[1]));
+			
+			String napis = new String();
+			int tmp;
+			while((tmp = fis.read(bufor)) != -1)
+			{
+				fos.write(bufor,0,tmp);
+			}
+			
+			fis.close();
+			fos.close();
+			
+		}
+		catch(FileNotFoundException e)
+		{
+		    System.out.println("Plik nie zostal znaleziony");
+		}
+		catch(IOException e)
+		{
+		    System.out.println("Blad wejscia/wyjscia");
+		}
+	}
+}

@@ -1,0 +1,109 @@
+import java.math.*;
+
+public class Complex
+{
+private double r, i;
+
+	public Complex(){
+		
+	}
+	public Complex(double arg1){
+		r= arg1;
+	}
+	public Complex(double arg1, double arg2){
+		r = arg1;
+		i = arg2;
+	}
+	public Complex(Complex c){
+		c.r = r;
+		c.i = i;
+	}
+	public Complex(String s){
+		
+	}
+
+    static Complex add(Complex a, Complex b){
+    	return new Complex(a.r + b.r , a.i + b.i );
+    }
+    /* Zwraca sumê dwóch liczb zespolonych */
+    static Complex sub(Complex a, Complex b){
+    	return new Complex(a.r - b.r , a.i - b.i );
+    }
+    /* Zwraca ró¿nice dwóch liczb zespolonych */
+    static Complex mul(Complex a, Complex b){
+    	return new Complex(a.r * b.r - a.i * b.i , a.r * b.i + a.i * b.r  );
+    }
+    /* Zwraca iloczyn dwóch liczb zespolonych */
+    static Complex div(Complex a, Complex b){
+    	return new Complex( (a.r * b.r + a.i * b.i ) /  b.r * b.r + b.i* b.i  , ( a.i * b.r - a.r * b.i)/ b.r * b.r + b.i* b.i );
+    }
+    /* Zwraca iloraz dwóch liczb zespolonych */
+    static double abs(Complex a){
+    	return sqrt( a.r*a.r + a.i * a.i); // nie widze powodu czemu nie dziala
+    }
+    /* Zwraca modu³ liczby zespolonej */    
+    static double phase(Complex);         
+    /* Zwraca faze liczby zespolonej */ 
+    static double sqrAbs(Complex){
+    	return a.r*a.r + a.i * a.i;
+    }
+    /* Zwraca kwadrat modu³u liczby zespolonej */   
+    static double re(Complex a){
+    	return a.r;
+    }
+    /* Zwraca czêœæ rzeczywist¹ liczby zespolonej */    
+    static double im(Complex a){
+    	return a.i;
+    }
+    /* Zwraca czêœæ urojon¹ liczby zespolonej */    
+
+    /* Poni¿sze metody modyfikuja aktualny obiekt i zwracaj¹ 'this' */
+
+    Complex add(Complex a){
+    	return new Complex( this.r + a.r, this.i + a.i);// Dodaje liczbê zespolon¹
+    }
+    Complex sub(Complex a){
+    	return new Complex( this.r - a.r, this.i - a.i);// Odejmuje liczbê zespolon¹
+    }
+    Complex mul(Complex a){
+    	return new Complex(this.r * a.r - this.i * a.i , this.r * a.i + this.i * a.r  );// Mno¿y przez liczbê zespolon¹
+    }
+    Complex div(Complex){
+    	return new Complex( (this.r * a.r + this.i * a.i ) / a.r * a.r + a.i* a.i, (this.r * a.i - this.i * a.r ) / a.r * a.r + a.i* a.i );// Dzieli przez liczbê zespolon¹
+    }
+    /*
+    double abs();
+    double sqrAbs();
+    double re();
+    double im();
+    */
+    String toString(){
+    	return String.valueOf(this.r) + "+" + String.valueOf(this.i) + "i";
+    }
+    /* Zwraca String z zapisan¹ 
+        liczb¹ zespolon¹ formacie "-1.23+4.56i" */
+
+   // static Complex valueOf(String);
+    /* Zwraca liczbê zespolona o wartoœci podanej 
+        w argumencie w formacie "-1.23+4.56i" */
+
+    void setRe(double a){
+    	this.r =a;
+    }
+    /* Przypisuje podan¹ wartoœæ czêœci rzeczywistej */
+
+    void setIm(double a){
+    	this.i =a;
+    }
+    /* Przypisuje podan¹ wartoœæ czêœci urojonej */
+
+    void setVal(Complex a){
+    	this.r= a.r;
+    	this.i= a.i;
+    }
+    void setVal(double a, double b){
+    	r= a.r;
+    	i= a.i;
+    }
+    /* Przypisuje podan¹ wartoœæ */
+}

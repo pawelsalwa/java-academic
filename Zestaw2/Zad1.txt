@@ -1,0 +1,93 @@
+import javax.swing.*;
+
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+
+
+public class Zad1 {
+	public static void main(String[] args)
+    {
+        System.out.println("wywolaniasdasde metody main"); 
+        Sumator sumator = new Sumator();
+        
+
+    }
+}
+
+class Sumator extends javax.swing.JFrame implements java.awt.event.ActionListener {
+	
+	JPanel MyPanel;
+	JLabel lab1;
+	JLabel lab2;
+	JTextField txt1;
+	JTextField txt2;
+	JButton but;
+	String napis;
+	Sumator(){
+		
+		
+		
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(400,400);
+		
+		GridLayout gridLayout = new GridLayout(2,3);
+		
+		
+		MyPanel = new JPanel();
+		this.getContentPane().add(MyPanel);
+		
+		MyPanel.setLayout(gridLayout);
+		
+		lab1 = new JLabel("wpisz liczby do dodania");
+		lab2 = new JLabel("tutaj mamy wynik:");
+		MyPanel.add(lab1);
+		MyPanel.add(lab2);
+
+		but = new JButton("wypisz sume");
+		but.addActionListener(this);
+		
+		txt1 = new JTextField();
+		txt1.setPreferredSize(new Dimension(200,24));
+		txt2 = new JTextField();
+		
+		txt2.setPreferredSize(new Dimension(200,24));
+		napis = txt1.getText();
+		
+		this.setVisible(true);
+
+       setLayout(gridLayout);
+		
+		MyPanel.add(txt1);
+		MyPanel.add(txt2);
+		MyPanel.add(but);
+		MyPanel.add(lab2);
+	}
+	
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+        System.out.println("wywolana metoda z interface'u"); 
+        
+        String napis1 = txt1.getText();
+        String napis2 = txt2.getText();
+        
+        try{
+        	int liczba1 = Integer.parseInt(napis1);
+        	int liczba2 = Integer.parseInt(napis2);
+        	int wynik = liczba1 + liczba2;
+            lab2.setText("wynik to:" + wynik);
+
+        } catch (NumberFormatException e1){
+            System.out.println("nie wpisales liczb!!");
+            lab2.setText("nie wpisales liczb!!");
+
+        }
+        
+	}
+	
+}

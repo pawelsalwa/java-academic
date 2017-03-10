@@ -1,0 +1,35 @@
+public class Zad4 {
+	public static void main(String[] args)throws DivideByZeroException {
+		Divide obj = new Divide();
+		obj.div(Double.parseDouble(args[0]),Double.parseDouble(args[1]));		
+	}
+
+}
+
+class DivideByZeroException extends java.lang.Exception {
+	
+	String komunikat = new String();
+	
+	DivideByZeroException(String a, String b){
+			komunikat = "probujesz dzielic przez zero";
+		}
+	
+	@Override
+	public String getMessage(){
+		return komunikat;
+	}
+}
+
+class Divide{
+	public static double div(double a, double b)throws DivideByZeroException {
+		double c;
+		
+		if (b == 0){
+			throw new DivideByZeroException(String.valueOf(a), String.valueOf(b));
+		}
+		
+		c= a/b;
+		
+		return c;
+	}
+}
